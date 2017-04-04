@@ -1,5 +1,5 @@
-Project from trak
+Project for trak
 
 instructions:
-  1. NPM install
+  1. npm install
   2. npm run start
