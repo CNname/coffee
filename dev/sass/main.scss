@@ -11,7 +11,7 @@ body {
 
 .main-container--header{
   width: 100%;
-  padding: 20px 40px;
+  padding: 20px 0;
   background-color: $color-dark-blue;
   text-align: center;
 
@@ -25,6 +25,7 @@ body {
     color: $color-white;
     font-size: 25px;
     color: $color-grey;
+
   }
 
 }
