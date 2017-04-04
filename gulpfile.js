@@ -45,10 +45,10 @@ gulp.task('assets', function(){
 });
 
 gulp.task('watch', ['browserSync', 'sass', 'typescript'], function(){
-  gulp.watch('./dev/**/*.html').on('change', browserSync.reload)
+  gulp.watch('./dev/**/*.html').on('change', browserSync.reload); // this
   gulp.watch('./dev/sass/**/*.scss', ['sass']);
   gulp.watch(['./dev/assets/**/*.*'], ['assets'])
-  gulp.watch('./dev/**/*.coffee', ['coffee'], browserSync.reload);
+  gulp.watch('./dev/**/*.coffee', ['coffee'], browserSync.reload); // or this ?
   gulp.watch('./dev/**/*.ts', ['typescript'], browserSync.reload);
 })
 
