@@ -1,12 +1,17 @@
 {
-  "name": "Coffeescript in space",
+  "name": "space",
   "version": "0.0.1",
-  "license": "MIT",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/CNname/coffee.git"
+  },
   "scripts": {
     "start": "gulp"
   },
-  "private": true,
-  "dependencies": {},
+  "dependencies": {
+    "coffee-script": "^1.12.4"
+  },
   "devDependencies": {
     "gulp": "^3.9.1",
     "gulp-coffee": "^2.3.4",
