@@ -1,5 +1,30 @@
  $color-white: #fff;
+ $color-dark-blue: #17192A;
+ $color-blue: #252B3E;
+ $color-grey: #707465;
+ $color-beige: #F0EFBB;
+ $color-light-grey: #A2A58F;
 
 body {
-  background-color: $color-white;
+  background-color: $color-blue;
+}
+
+.main-container--header{
+  width: 100%;
+  padding: 20px 40px;
+  background-color: $color-dark-blue;
+  text-align: center;
+
+  .main-container--title{
+    color: $color-white;
+  }
+  .main-container--title-divider{
+    color: $color-light-grey;
+  }
+  .main-container--subtitle{
+    color: $color-white;
+    font-size: 25px;
+    color: $color-grey;
+  }
+
 }
