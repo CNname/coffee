@@ -3,9 +3,12 @@ var sass = require('gulp-sass');
 var coffee = require('gulp-coffee');
 var browserSync = require('browser-sync').create();
 var ts = require('gulp-typescript');
+var tsOptions = require('./dev/tsconfig.json');
+
 
 gulp.task('browserSync', function(){
     browserSync.init({
+      port: 8082,
         server: {
             baseDir: 'dist'
         },
@@ -25,10 +28,7 @@ gulp.task('coffee', function() {
 
 gulp.task('typescript', function(){
   return gulp.src('./dev/**/*.ts')
-          .pipe(ts({
-              noImplicitAny: true,
-              out: 'output.js'
-          }))
+          .pipe(ts(tsOptions.compilerOptions))
           .pipe(gulp.dest('./dist/js'));
 });
 
@@ -53,4 +53,4 @@ gulp.task('watch', ['browserSync', 'sass', 'typescript'], function(){
 })
 
 //gulp.task('default', ['html', 'sass', 'coffee', 'sass:watch', 'coffee:watch', 'html:watch', 'assets', 'assets:watch']);
-gulp.task('default', ['typescript', 'html', 'sass', 'watch' ]);
+gulp.task('default', ['typescript', 'html', 'sass', 'watch', 'assets' ]);
