@@ -4,10 +4,11 @@
   "private": true,
   "repository": {
     "type": "git",
-    "url": "git://github.com/CNname/coffee.git"
+    "url": "git://github.com/CNname/trak_projekti.git"
   },
   "scripts": {
-    "start": "gulp"
+    "start": "gulp",
+    "gulp": "gulp"
   },
   "dependencies": {
     "coffee-script": "^1.12.4",
