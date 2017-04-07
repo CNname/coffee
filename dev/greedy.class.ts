@@ -2,7 +2,7 @@
  * Homebrew - greedy algorithm,
  * which goes from closest points to another
  */
-export class GreedyAlcorithm {
+export class GreedyAlgorithm {
 
     private home: number; // index of coords which is home
     private coords: Array<{ x: number; y: number; }>;
@@ -59,6 +59,7 @@ export class GreedyAlcorithm {
 
         ctx.moveTo(homeCoords.x, homeCoords.y);
         ctx.lineTo(closest.x, closest.y);
+        ctx.strokeStyle = '#17192A';
         ctx.stroke();
     }
 

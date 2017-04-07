@@ -8,7 +8,7 @@ interface Coord {
 require(['./canvas-handler.class', './greedy.class'], (ch, g) => {
 
     const CanvasHandler = ch.CanvasHandler;
-    const GreedyAlcorithm = g.GreedyAlcorithm;
+    const GreedyAlgorithm = g.GreedyAlgorithm;
 
     let acoCanvas = new CanvasHandler('aco-canvas');
     let greedyCanvas = new CanvasHandler('greedy-canvas');
@@ -30,9 +30,10 @@ require(['./canvas-handler.class', './greedy.class'], (ch, g) => {
 
     };
     
-    let setCity = (ctx, coords: Coord, radius: number = 5) => {
+    let setCity = (ctx, coords: Coord, radius: number = 5, color:String = '#17192A') => {
         ctx.beginPath();
         ctx.arc(coords.x, coords.y, radius, 0, 2*Math.PI);
+        ctx.fillStyle = color;
         ctx.fill();
     };
 
@@ -55,7 +56,7 @@ require(['./canvas-handler.class', './greedy.class'], (ch, g) => {
 
     }
 
-    let greedy = new GreedyAlcorithm(cityConfig.home, cityConfig.coords);
+    let greedy = new GreedyAlgorithm(cityConfig.home, cityConfig.coords);
     greedy.drawPath(greedyCanvas.getCtx());
 
 });
