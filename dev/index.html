@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--<base href="./" />-->
-    <title>Data Structures and Algorithms - Project</title>
+    <title>Tietorakenteet ja algoritmit</title>
     <script type="text/javascript" src="assets/require.js"></script>
     <link rel="stylesheet" href="assets/material.min.css">
     <script src="assets/material.min.js"></script>
@@ -24,13 +24,23 @@
   
       <section class="content">
   
+        <div class="content-description--wrapper">
+          <p class="content-description">Tällä sivustolla on ratkaistuna <a href="https://en.wikipedia.org/wiki/Travelling_salesman_problem" target="blank"> kiertävä kauppamies </a> -ongelma kahdella eri algoritmilla.<br> Paksumpi pallo kuvastaa kauppamiehen kotikaupunkia ja muut pallot asiakkaita.</p>
+        </div>
+
         <div class="content-algorithm--aco">
-          <h2 class="content-algorithm--title">Ant colony optimization</h2>
+          <div class="content-algorithm--header">
+            <h2 class="content-algorithm--title">Ant colony optimization</h2>
+            <!--<i class="content-algorithm--icon material-icons">&#xE5C8;</i>-->
+          </div>
           <canvas id="aco-canvas" width="600" height="400"></canvas>
         </div>
   
         <div class="content-algorithm--greedy">
-          <h2 class="content-algorithm--title">Greedy algorithm</h2>
+          <div class="content-algorithm--header">
+            <h2 class="content-algorithm--title">Greedy algorithm</h2>
+            <!--<i class="content-algorithm--icon material-icons">&#xE5C8;</i>-->
+          </div>
           <canvas id="greedy-canvas" width="600" height="400"></canvas>
         </div>
   
