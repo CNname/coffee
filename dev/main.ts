@@ -39,7 +39,7 @@ require(['./canvas-handler.class', './greedy.class'], (ch, g) => {
 
     // randomize city positions and hometown
     let cityConfig: { amount?: number; coords?: Array<Coord>; home?: number } = {};
-    cityConfig.amount = 15;
+    cityConfig.amount = 30;
     cityConfig.coords = getCoords(cityConfig.amount);
     cityConfig.home = Math.round(Math.random()*cityConfig.amount);
 

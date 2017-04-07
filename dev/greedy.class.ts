@@ -27,8 +27,8 @@ export class GreedyAlgorithm {
         for (let i=0; i<pointArray.length; i++) {
 
             // get the subtraction of current distance and another
-            let subX: number = Math.abs(currentX - pointArray[i].x),
-                subY: number = Math.abs(currentY - pointArray[i].y);
+            let subX: number = currentX - pointArray[i].x,
+                subY: number = currentY - pointArray[i].y;
             // get the distance using pythagoras theorem
             let distance = Math.sqrt(Math.pow(subX, 2) + Math.pow(subY, 2));
 
