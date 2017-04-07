@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d1151789-ff5d-47d5-8bf3-61aedf279b44" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dev/greedy.class.ts" afterPath="$PROJECT_DIR$/dev/greedy.class.ts" />
-    </list>
+    <list default="true" id="d1151789-ff5d-47d5-8bf3-61aedf279b44" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -58,11 +55,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="greedy.class.ts" pinned="false" current-in-tab="true">
+      <file leaf-file-name="greedy.class.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dev/greedy.class.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="779">
-              <caret line="109" column="0" lean-forward="true" selection-start-line="109" selection-start-column="0" selection-end-line="109" selection-end-column="0" />
+            <state relative-caret-position="-513">
+              <caret line="33" column="0" lean-forward="true" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="aco.class.ts" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/dev/aco.class.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="9" column="4" lean-forward="false" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
               <folding />
             </state>
           </provider>
@@ -119,6 +126,7 @@
         <option value="$PROJECT_DIR$/dev/tsconfig.json" />
         <option value="$PROJECT_DIR$/dev/main.ts" />
         <option value="$PROJECT_DIR$/dev/greedy.class.ts" />
+        <option value="$PROJECT_DIR$/dev/aco.class.ts" />
       </list>
     </option>
   </component>
@@ -305,12 +313,12 @@
       <workItem from="1491414639284" duration="566000" />
       <workItem from="1491415348722" duration="963000" />
       <workItem from="1491546548706" duration="5380000" />
-      <workItem from="1491557604062" duration="10099000" />
+      <workItem from="1491557604062" duration="10535000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="17008000" />
+    <option name="totallyTimeSpent" value="17444000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="0" />
@@ -502,8 +510,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/dev/greedy.class.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="779">
-          <caret line="109" column="0" lean-forward="true" selection-start-line="109" selection-start-column="0" selection-end-line="109" selection-end-column="0" />
+        <state relative-caret-position="-513">
+          <caret line="33" column="0" lean-forward="true" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dev/aco.class.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="4" lean-forward="false" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
           <folding />
         </state>
       </provider>
