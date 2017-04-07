@@ -29,3 +29,35 @@ body {
   }
 
 }
+.content{
+ margin: 0 auto;
+ width: 100%;
+ text-align: center;
+
+ /*&:after{
+  clear: both;
+  display: block;
+  height: 0;
+  overflow: hidden;
+  visibility: hidden;
+  content: ".";
+  font-size: 0;
+ }*/
+}
+
+.content-algorithm--title{
+    color: $color-light-grey;
+}
+
+.content-algorithm--aco, .content-algorithm--greedy{
+  padding: 20px;
+  margin: 0;
+  display: inline-block;
+}
+
+
+#aco-canvas, #greedy-canvas{
+  background: $color-white;
+}
+
+

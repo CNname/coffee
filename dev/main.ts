@@ -18,6 +18,7 @@ require(['./canvas-handler.class'], (res) => {
     // t.getCtx().lineTo(200,200);
     // t.getCtx().stroke();
 
+
     let getCoords = (amount: number): Array<Coord> => {
 
         let arr: Array<Coord> = [];
@@ -32,7 +33,7 @@ require(['./canvas-handler.class'], (res) => {
         return arr;
 
     };
-
+    
     let setCity = (ctx, coords: Coord) => {
         ctx.beginPath();
         ctx.arc(coords.x, coords.y, 5, 0, 2*Math.PI);
