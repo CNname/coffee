@@ -5,19 +5,15 @@ interface Coord {
     y: number;
 }
 
-require(['./canvas-handler.class'], (res) => {
+require(['./canvas-handler.class', './greedy.class'], (ch, g) => {
 
-    const CanvasHandler = res.CanvasHandler;
+    const CanvasHandler = ch.CanvasHandler;
+    const GreedyAlcorithm = g.GreedyAlcorithm;
 
     let acoCanvas = new CanvasHandler('aco-canvas');
     let greedyCanvas = new CanvasHandler('greedy-canvas');
     const CANVAS_WIDTH: number = 600;
     const CANVAS_HEIGHT: number = 400;
-
-    // t.getCtx().moveTo(0,0);
-    // t.getCtx().lineTo(200,200);
-    // t.getCtx().stroke();
-
 
     let getCoords = (amount: number): Array<Coord> => {
 
@@ -34,9 +30,9 @@ require(['./canvas-handler.class'], (res) => {
 
     };
     
-    let setCity = (ctx, coords: Coord) => {
+    let setCity = (ctx, coords: Coord, radius: number = 5) => {
         ctx.beginPath();
-        ctx.arc(coords.x, coords.y, 5, 0, 2*Math.PI);
+        ctx.arc(coords.x, coords.y, radius, 0, 2*Math.PI);
         ctx.fill();
     };
 
@@ -47,8 +43,19 @@ require(['./canvas-handler.class'], (res) => {
     cityConfig.home = Math.round(Math.random()*cityConfig.amount);
 
     for (let coord of cityConfig.coords) {
-        setCity(acoCanvas.getCtx(), coord);
-        setCity(greedyCanvas.getCtx(), coord);
+
+        // check if coord is home
+        if (cityConfig.home === cityConfig.coords.indexOf(coord)) {
+            setCity(acoCanvas.getCtx(), coord, 10);
+            setCity(greedyCanvas.getCtx(), coord, 10);
+        } else {
+            setCity(acoCanvas.getCtx(), coord);
+            setCity(greedyCanvas.getCtx(), coord);
+        }
+
     }
+
+    let greedy = new GreedyAlcorithm(cityConfig.home, cityConfig.coords);
+    greedy.drawPath(greedyCanvas.getCtx());
 
 });
