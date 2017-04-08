@@ -23,7 +23,6 @@ export interface Colony {
     setOnIteration(): void;
     init(coords:any): void;
     iterate(): void;
-    doWork(): void;
     sendOutAnts(): void;
     updatePheromones(): void;
     evaporatePheromones(): void;
@@ -78,20 +77,20 @@ export class AcoAlgorithm implements Colony {
             this.pheromones[x] = [];
             for(let y = 0; y < this.distances.length; y++) {
                 if (x !== y) {
-                this.pheromones[x][y] = this.pheromone;
+                    this.pheromones[x][y] = this.pheromone;
                 }
             }
         }
-        console.log('Pheromones');
-        console.log(this.pheromones);
+        //console.log('Pheromones');
+        //console.log(this.pheromones);
     }
 
     iterate(): void {
         let z = 0;
         let update = ((z)=>{
             setTimeout(()=>{
-                //this.sendOutAnts();
-                //this.updatePheromones();
+                this.sendOutAnts();
+                this.updatePheromones();
                 z++;
                 //this.daemonActions(z);
                 if (z < this.maxIterations && this.goOn) {
@@ -101,9 +100,6 @@ export class AcoAlgorithm implements Colony {
             }, 500);
         });
         update(z);
-    }
-
-    doWork(): void {
     }
 
     sendOutAnts(): void {
@@ -117,6 +113,7 @@ export class AcoAlgorithm implements Colony {
         for(let i = 0; i < this.popSize; i++) {
             this.population[i].layPheromones(this.pheromones);
         }
+        console.log(this.pheromones);
     }
 
     evaporatePheromones(): void {

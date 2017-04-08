@@ -65,13 +65,11 @@ require(['./canvas-handler.class', './greedy.class', './aco.class'], (ch, g, a) 
     let alpha = 1.0,
         beta = 2.0,
         q = 1.0,
-        iterations = 100,
+        iterations = 10,
         pheromone = 1.0;
 
     let aco = new AcoAlgorithm(alpha, beta, q, iterations, pheromone);
     aco.init(JSON.parse(JSON.stringify(cityConfig.coords)));
-    //aco.calculateDistances();
-    //console.log(cityConfig.coords[0]);
-    //aco.iterate();
+    aco.iterate(); // comment this in order to stop the console.log spam
 
 });
