@@ -1,19 +1,8 @@
+import { Ant } from "./ant.class";
+
 /**
  * Ant Colony Optimization algorithm
  */
-export interface Ant {
-    alpha: number;
-    beta: number;
-    q: number;
-    base: number;
-    walk: Array<number>;
-    walkLength: number;
-    doWalk(): void;
-    chooseNext(): number;
-    calcWalkLength(): number;
-    layPheromones(): void;
-}
-
 export interface Colony {
     popSize: number;
     maxIteration: number;
@@ -40,12 +29,54 @@ export interface Colony {
     daemonActions(): void;
 }
 
-export class AcoAlgorithm {
+export class AcoAlgorithm implements Colony {
 
-    private ants: Array<Ant>;
+    popSize: number;
+    maxIteration: number;
+    distances: number;
+    alpha: number;
+    beta: number;
+    pho: number;
+    q: number;
+    ip: number;
+    population: Array<Ant>;
+    pheromones: Array<number>;
+    bestLength: number;
+    bestSolution: number;
+    goOn: boolean;
+    onNewBest: number;
 
     constructor() {
+        // just for testing an Ant class
+        this.population = [];
+        this.population.push(new Ant());
+    }
 
+    setOnNewBest(): void {
+    }
+
+    setOnIteration(): void {
+    }
+
+    init(): void {
+    }
+
+    iterate(): void {
+    }
+
+    doWork(): void {
+    }
+
+    sendOutAnts(): void {
+    }
+
+    updatePheromones(): void {
+    }
+
+    evaporatePheromones(): void {
+    }
+
+    daemonActions(): void {
     }
 
 

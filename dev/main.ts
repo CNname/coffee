@@ -5,10 +5,11 @@ interface Coord {
     y: number;
 }
 
-require(['./canvas-handler.class', './greedy.class'], (ch, g) => {
+require(['./canvas-handler.class', './greedy.class', './aco.class'], (ch, g, a) => {
 
     const CanvasHandler = ch.CanvasHandler;
     const GreedyAlgorithm = g.GreedyAlgorithm;
+    const AcoAlgorithm = a.AcoAlgorithm;
 
     let acoCanvas = new CanvasHandler('aco-canvas');
     let greedyCanvas = new CanvasHandler('greedy-canvas');
@@ -19,20 +20,20 @@ require(['./canvas-handler.class', './greedy.class'], (ch, g) => {
 
         let arr: Array<Coord> = [];
 
-        for (let i=0; i < amount; i++) {
+        for (let i = 0; i < amount; i++) {
             arr.push({
-               x: Math.round(Math.random()*CANVAS_WIDTH),
-               y: Math.round(Math.random()*CANVAS_HEIGHT)
+                x: Math.round(Math.random() * CANVAS_WIDTH),
+                y: Math.round(Math.random() * CANVAS_HEIGHT)
             });
         }
 
         return arr;
 
     };
-    
-    let setCity = (ctx, coords: Coord, radius: number = 5, color:String = '#17192A') => {
+
+    let setCity = (ctx, coords: Coord, radius: number = 5, color: String = '#17192A') => {
         ctx.beginPath();
-        ctx.arc(coords.x, coords.y, radius, 0, 2*Math.PI);
+        ctx.arc(coords.x, coords.y, radius, 0, 2 * Math.PI);
         ctx.fillStyle = color;
         ctx.fill();
     };
@@ -41,7 +42,7 @@ require(['./canvas-handler.class', './greedy.class'], (ch, g) => {
     let cityConfig: { amount?: number; coords?: Array<Coord>; home?: number } = {};
     cityConfig.amount = 30;
     cityConfig.coords = getCoords(cityConfig.amount);
-    cityConfig.home = Math.round(Math.random()*cityConfig.amount);
+    cityConfig.home = Math.round(Math.random() * cityConfig.amount);
 
     for (let coord of cityConfig.coords) {
 
@@ -58,5 +59,7 @@ require(['./canvas-handler.class', './greedy.class'], (ch, g) => {
 
     let greedy = new GreedyAlgorithm(cityConfig.home, cityConfig.coords);
     greedy.drawPath(greedyCanvas.getCtx());
+
+    let aco = new AcoAlgorithm();
 
 });
