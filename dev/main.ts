@@ -61,5 +61,6 @@ require(['./canvas-handler.class', './greedy.class', './aco.class'], (ch, g, a) 
     greedy.drawPath(greedyCanvas.getCtx());
 
     let aco = new AcoAlgorithm();
+    aco.init();
 
 });

@@ -49,7 +49,6 @@ export class AcoAlgorithm implements Colony {
     constructor() {
         // just for testing an Ant class
         this.population = [];
-        this.population.push(new Ant());
     }
 
     setOnNewBest(): void {
@@ -59,6 +58,13 @@ export class AcoAlgorithm implements Colony {
     }
 
     init(): void {
+        this.popSize = 20; // the amount of ants
+        this.pheromones = [];
+        this.bestSolution = null;
+        this.goOn = true;
+        for(let i = 0; i < this.popSize; i++) {
+            this.population.push(new Ant()); 
+        }
     }
 
     iterate(): void {
