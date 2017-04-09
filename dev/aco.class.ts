@@ -1,33 +1,9 @@
 import { Ant } from "./ant.class";
+import { Colony } from './interfaces';
 
 /**
  * Ant Colony Optimization algorithm
  */
-export interface Colony {
-    popSize: number;
-    maxIterations: number;
-    distances: Array<Array<number>>;
-    alpha: number;
-    beta: number;
-    pho: number
-    q: number;
-    ip: number;
-    population: Array<Ant>;
-    pheromone:number;
-    pheromones: Array<Array<number>>;
-    bestLength: number;
-    bestSolution: number;
-    goOn: boolean; // continue
-    onNewBest: number;
-    setOnNewBest(): void;
-    setOnIteration(): void;
-    init(coords:any): void;
-    iterate(): void;
-    sendOutAnts(): void;
-    updatePheromones(): void;
-    evaporatePheromones(): void;
-    daemonActions(x:number): void;
-}
 
 export class AcoAlgorithm implements Colony {
     popSize: number; // size of the colony
@@ -35,7 +11,7 @@ export class AcoAlgorithm implements Colony {
     distances: Array<Array<number>>;
     alpha: number;
     beta: number;
-    pho: number;
+    rho: number; // evaporation factor
     q: number;
     ip: number;
     population: Array<Ant>; // ants of the colony
@@ -44,7 +20,8 @@ export class AcoAlgorithm implements Colony {
     bestLength: number;
     bestSolution: number;
     goOn: boolean;
-    onNewBest: number;
+    onNewBest: Function;
+    onIteration:Function;
 
     constructor(alpha:number, beta:number, q:number, iterations:number, pheromone:number) {
         this.population = [];
@@ -54,14 +31,16 @@ export class AcoAlgorithm implements Colony {
         this.maxIterations = iterations;
         this.pheromone = pheromone;
 
-        this.pho = 0.1;
+        this.rho = 0.1;
 
     }
 
-    setOnNewBest(): void {
+    setOnNewBest(onNewBest:Function): void {
+        this.onNewBest = onNewBest;
     }
 
-    setOnIteration(): void {
+    setOnIteration(onIteration:Function): void {
+        this.onIteration = onIteration;
     }
 
     init(coords:any): void {
@@ -85,8 +64,6 @@ export class AcoAlgorithm implements Colony {
             }
         }
 
-        console.log('Pheromones');
-        console.log(this.pheromones);
     }
 
     iterate(): void {
@@ -96,12 +73,12 @@ export class AcoAlgorithm implements Colony {
                 this.sendOutAnts();
                 this.updatePheromones();
                 z++;
-                //this.daemonActions(z);
+                this.daemonActions(z);
                 if (z < this.maxIterations && this.goOn) {
-                    console.log('iteration ' + z);
+                    console.log('iteration ' + (z + 1));
                     update(z);
                 }
-            }, 500);
+            }, 50);
         });
         update(z);
     }
@@ -117,20 +94,32 @@ export class AcoAlgorithm implements Colony {
         for(let i = 0; i < this.popSize; i++) {
             this.population[i].layPheromones(this.pheromones);
         }
-        console.log(this.pheromones);
+       // console.log(this.pheromones);
     }
 
     evaporatePheromones(): void {
         for(let x = 0; x < this.distances.length; x++) {
             for(let y = 0; y < this.distances.length; y++) {
                 if (x !== y) {
-                    this.pheromones[x][y] = (1 - this.pho) * this.pheromones[x][y];
+                    this.pheromones[x][y] = (1 - this.rho) * this.pheromones[x][y];
                 } 
             }
         }
     }
 
     daemonActions(x:number): void {
+        for(let i = 0; i < this.popSize; i++) {
+            if (!this.bestSolution || this.population[i].walkLength < this.bestLength) {
+                this.bestSolution = JSON.parse(JSON.stringify(this.population[i].walk));
+                this.bestLength = JSON.parse(JSON.stringify(this.population[i].walkLength));
+                if (this.onNewBest) {
+                    this.onNewBest(x, this.bestSolution, this.bestLength);
+                }
+            }
+        }
+        /*if (this.onIteration) {
+            this.onIteration(x, JSON.parse(JSON.stringify(this.pheromones)))
+        }*/
     }
 
     calculateDistances(dist:Array<any>){
