@@ -47,13 +47,15 @@ export class AcoAlgorithm implements Colony {
     onNewBest: number;
 
     constructor(alpha:number, beta:number, q:number, iterations:number, pheromone:number) {
-        // just for testing an Ant class
         this.population = [];
         this.alpha = alpha;
         this.beta = beta;
         this.q = q;
         this.maxIterations = iterations;
         this.pheromone = pheromone;
+
+        this.pho = 0.1;
+
     }
 
     setOnNewBest(): void {
@@ -69,6 +71,7 @@ export class AcoAlgorithm implements Colony {
         this.goOn = true;
         this.calculateDistances(coords);
 
+        // create Ants
         for(let i = 0; i < this.popSize; i++) {
             this.population.push(new Ant(this.alpha, this.beta, this.q)); 
         }
@@ -81,8 +84,9 @@ export class AcoAlgorithm implements Colony {
                 }
             }
         }
-        //console.log('Pheromones');
-        //console.log(this.pheromones);
+
+        console.log('Pheromones');
+        console.log(this.pheromones);
     }
 
     iterate(): void {
@@ -134,9 +138,9 @@ export class AcoAlgorithm implements Colony {
        for (let i = 0; i < dist.length; i++) {
             this.distances[i] = [];
             for (let j = 0; j < dist.length; j++) {
-                let subX: number = dist[i].x - dist[j].x,
-                subY: number = dist[i].y - dist[j].y;
                 if (i !== j) {
+                    let subX: number = dist[i].x - dist[j].x,
+                        subY: number = dist[i].y - dist[j].y;
                     let distance = Math.sqrt(Math.pow(subX, 2) + Math.pow(subY, 2));
                     this.distances[i][j] = distance;
                 }
