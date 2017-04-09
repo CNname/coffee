@@ -54,10 +54,9 @@ export class Ant implements IAnt {
      */
     chooseNext(currentNode: number, distances: Array<Array<number>>, pheromones: Array<Array<number>>): number {
 
-        let sumall = 0;
-        let summul = 0;
+        let sumall = 0; // sum all current node's pheromones and distances multiplied: pheromones[i]^alpha * distances[i]^beta
         let unvisited = [];
-        let probs = [];
+        let probs = []; // probabilities: mul / sumall
 
         // check unvisited points
         for (let i=0; i<distances.length; i++) {
@@ -66,7 +65,7 @@ export class Ant implements IAnt {
             }
         }
 
-        // calculate probabilities
+        // create a denominator (sumall) for probability calculation
         for (let i=0; i<pheromones.length; i++) {
             // not current and must be unvisited
             if (i !== currentNode && unvisited.indexOf(i) !== -1) {
@@ -74,22 +73,25 @@ export class Ant implements IAnt {
             }
         }
 
-        // this needs some studying
+        // create a numerator (mul) for probability calculation,
+        // calculate probability and push it to array 
         for (let i=0; i<distances[currentNode].length; i++) {
             // not current and must be unvisited
             if (i !== currentNode && unvisited.indexOf(i) !== -1) {
                 let mul = Math.pow(pheromones[currentNode][i], this.alpha) * Math.pow((1/distances[currentNode][i]), this.beta);
+                // calculate probability and push it to array
                 probs.push(mul/sumall);
-                summul += mul;
             }
         }
 
         let rand = Math.random();
         let x = 0;
         let tally = probs[x];
+
+        // compare probability to random number,
+        // if probability is greater or equal, return x position unvisited node
         while (rand > tally && x < probs.length - 1) {
             tally +=probs[++x];
-
         }
 
         return unvisited[x];
