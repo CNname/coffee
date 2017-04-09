@@ -46,10 +46,18 @@ export class Ant implements IAnt {
 
     }
 
+    /**
+     * Choose next node by calculating probabilities
+     * @param currentNode 
+     * @param distances 
+     * @param pheromones 
+     */
     chooseNext(currentNode: number, distances: Array<Array<number>>, pheromones: Array<Array<number>>): number {
 
         let sumall = 0;
+        let summul = 0;
         let unvisited = [];
+        let probs = [];
 
         // check unvisited points
         for (let i=0; i<distances.length; i++) {
@@ -58,16 +66,13 @@ export class Ant implements IAnt {
             }
         }
 
-        // this needs some studying
+        // calculate probabilities
         for (let i=0; i<pheromones.length; i++) {
             // not current and must be unvisited
             if (i !== currentNode && unvisited.indexOf(i) !== -1) {
                 sumall += Math.pow(pheromones[currentNode][i], this.alpha) * Math.pow((1/distances[currentNode][i]), this.beta);
             }
         }
-
-        let probs = [];
-        let summul = 0;
 
         // this needs some studying
         for (let i=0; i<distances[currentNode].length; i++) {
