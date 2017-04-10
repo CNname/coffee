@@ -111,7 +111,8 @@ export class Ant implements IAnt {
 
     layPheromones(pheromones: Array<Array<number>>): void {
 
-        // this needs some studying
+        // update pheromones of path both ways,
+        // so it's not important which direction the path is circled 
         for (let i=1; i<this.walk.length; i++) {
             pheromones[this.walk[i-1]][this.walk[i]] += (1/this.walkLength) * this.q;
             pheromones[this.walk[i]][this.walk[i-1]] += (1/this.walkLength) * this.q;
