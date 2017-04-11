@@ -28,6 +28,10 @@ body {
   font-size: 0;
   }*/ }
 
+.content-inputs--wrapper{
+  margin-bottom: 50px;
+}
+
 .content-description--wrapper {
   padding: 40px 20px;
   background: #252B3E;
