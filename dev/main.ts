@@ -10,7 +10,6 @@ require(['./canvas-handler.class', './greedy.class', './aco.class'], (ch, g, a) 
     const CanvasHandler = ch.CanvasHandler;
     const GreedyAlgorithm = g.GreedyAlgorithm;
     const AcoAlgorithm = a.AcoAlgorithm;
-    let lull:Function;
     let acoCanvas = new CanvasHandler('aco-canvas');
     let greedyCanvas = new CanvasHandler('greedy-canvas');
     const CANVAS_WIDTH: number = 600;

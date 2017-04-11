@@ -72,6 +72,13 @@ export class GreedyAlgorithm {
         }
 
         // finally return home
+        // calculate distance between last point and home
+        let subX: number = current.x - this.coords[this.home].x,
+            subY: number = current.y - this.coords[this.home].y;
+        let distance = Math.sqrt(Math.pow(subX, 2) + Math.pow(subY, 2));
+        totalDistance += distance;
+
+
         this.canvas_arrow(ctx, current.x, current.y, this.coords[this.home].x, this.coords[this.home].y);
 
         // when every line is drawn, use stroke
