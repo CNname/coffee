@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--<base href="./" />-->
+    <title>Tietorakenteet ja algoritmit</title>
+    <script type="text/javascript" src="assets/require.js"></script>
+    <link rel="stylesheet" href="assets/material.min.css">
+    <script src="assets/material.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="css/main.css">
+  </head>
+  <body>
+  
+    <main class="main-container">
+  
+      <section class="main-container--header">
+        <!--<h1 class="main-container--title">Ant Colony Optimization  <span class="main-container--title-divider">vs</span> Greedy algorithm</h1>-->
+        <h2 class="main-container--subtitle">Tietorakenteet ja algoritmit <span class="main-container--title-divider">2017</span></h2>
+      </section>
+  
+      <section class="content">
+  
+        <div class="content-description--wrapper">
+          <p class="content-description">Tällä sivulla on ratkaistuna <a href="https://en.wikipedia.org/wiki/Travelling_salesman_problem" target="blank"> kiertävä kauppamies </a> -ongelma kahdella eri algoritmilla.<br> Paksumpi pallo kuvastaa kauppamiehen kotikaupunkia ja muut pallot asiakkaita.</p>
+        </div>
+        <div class="content-inputs--wrapper">
+
+          <form action="#" onsubmit="return checkAcoInputValues()">
+
+            <div>
+              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="city-count">
+                <label class="mdl-textfield__label" for="city-count">Kaupunkien määrä</label>
+                <span class="mdl-textfield__error">Input is not a number!</span>
+              </div>
+            </div>
+          
+            <div>
+              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="aco-iterations">
+                <label class="mdl-textfield__label" for="aco-iterations">Iteraatiot</label>
+                <span class="mdl-textfield__error">Input is not a number!</span>
+              </div>
+            </div>
+
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect" type="submit">
+              Päivitä
+            </button>
+
+          </form>
+
+          <script type="text/javascript">
+
+            (()=>{
+              // add storage values to input if any
+              document.getElementById("city-count").value = localStorage.getItem("cityCount") || "";
+              document.getElementById("aco-iterations").value = localStorage.getItem("acoIterations") || "";
+            })();
+
+            function checkAcoInputValues() {
+
+              var city = parseInt(document.getElementById("city-count").value),
+                  iter = parseInt(document.getElementById("aco-iterations").value);
+
+              if (city && iter) {
+                localStorage.setItem("cityCount", city);
+                localStorage.setItem("acoIterations", iter);
+                location.reload();
+              } else {
+                localStorage.removeItem("cityCount");
+                localStorage.removeItem("acoIterations");
+                location.reload();
+              }    
+
+              return false;
+            }
+
+          </script>
+
+          
+        </div>
+
+        <div class="content-algorithm--aco">
+          <div class="content-algorithm--header">
+            <h2 class="content-algorithm--title">Ant colony optimization</h2>
+            <!--<i class="content-algorithm--icon material-icons">&#xE5C8;</i>-->
+          </div>
+          <canvas id="aco-canvas" width="600" height="400"></canvas>
+        </div>
+  
+        <div class="content-algorithm--greedy">
+          <div class="content-algorithm--header">
+            <h2 class="content-algorithm--title">Greedy algorithm</h2>
+            <!--<i class="content-algorithm--icon material-icons">&#xE5C8;</i>-->
+          </div>
+          <canvas id="greedy-canvas" width="600" height="400"></canvas>
+        </div>
+  
+      </section>
+  
+    </main>
+    
+    <script type="text/javascript" src="js/bundle.js" async defer></script>
+  
+  </body>
+</html>
